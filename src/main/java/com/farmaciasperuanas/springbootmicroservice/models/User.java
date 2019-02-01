@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 public class User {
 	
@@ -21,6 +23,7 @@ public class User {
 	private Date birthdate;
 	
 	@Transient
+	@ApiModelProperty(hidden = true)
 	private Date deathDate;
 	
 	public User() {
