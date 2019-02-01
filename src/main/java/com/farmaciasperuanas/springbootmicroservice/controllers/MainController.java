@@ -1,6 +1,7 @@
 package com.farmaciasperuanas.springbootmicroservice.controllers;
 
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,25 +11,41 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.farmaciasperuanas.springbootmicroservice.models.User;
 import com.farmaciasperuanas.springbootmicroservice.repositories.UserRepository;
+import org.springframework.http.MediaType;
+import io.swagger.annotations.*;
 
 @RestController
+@Api(value = "Informacion del usuario", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 public class MainController {
 	
 	@Autowired
     UserRepository userRespository;
 	
 	@PostMapping("/user")
+	@ApiOperation(
+            value = "Agregar usuario",
+            notes = "Guardar datos del usuario",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            response = User.class, code = 200
+    )
 	public ResponseEntity<User> addUser(@RequestBody User user) {
 		userRespository.save(user);
 		return ResponseEntity.ok(user);
 	}
 	
 	@GetMapping("/user")
+	@ApiOperation(
+            value = "Obtener promedio de edad",
+            notes = "Obtener promedio de edad de todos los usuarios registrados",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            response = User.class, code = 200
+    )
 	public ResponseEntity<Double> getAgeAverage() {
 		List<User> users = userRespository.findAll();
 		int totalAges = 0;
@@ -42,6 +59,13 @@ public class MainController {
 	}
 	
 	@GetMapping("/users")
+	@ApiOperation(
+            value = "Listar usuarios y fecha de muerte",
+            notes = "Listar usuarios y agregar la fecha de muerte aproximada",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            response = User.class, code = 200
+    )
     public ResponseEntity<List<User>> users(){
 		List<User> users = userRespository.findAll();
 		final int averageLife = 75;
