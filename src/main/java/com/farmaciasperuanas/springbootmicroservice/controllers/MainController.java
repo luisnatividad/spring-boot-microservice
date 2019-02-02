@@ -38,7 +38,7 @@ public class MainController {
 		return ResponseEntity.ok(user);
 	}
 	
-	@GetMapping("/user")
+	@GetMapping("/get-age-average")
 	@ApiOperation(
             value = "Obtener promedio de edad",
             notes = "Obtener promedio de edad de todos los usuarios registrados",

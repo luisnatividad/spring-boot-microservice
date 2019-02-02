@@ -1,0 +1,5 @@
+com/farmaciasperuanas/springbootmicroservice/SpringBootMicroserviceApplication.class
+com/farmaciasperuanas/springbootmicroservice/models/User.class
+com/farmaciasperuanas/springbootmicroservice/controllers/MainController.class
+com/farmaciasperuanas/springbootmicroservice/swagger/SwaggerConfig.class
+com/farmaciasperuanas/springbootmicroservice/repositories/UserRepository.class
